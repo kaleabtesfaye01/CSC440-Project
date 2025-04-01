@@ -6,7 +6,7 @@ import { useAuth } from "../hooks/useAuth";
 
 export default function Register() {
   const navigate = useNavigate();
-  const { register } = useAuth();
+  const { register, loginWithGoogle, loginWithApple } = useAuth();
 
   const validationSchema = Yup.object().shape({
     firstname: Yup.string()
@@ -32,6 +32,24 @@ export default function Register() {
       setStatus({ error: "Registration failed. Please try again." });
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleGoogleRegister = async () => {
+    try {
+      await loginWithGoogle();
+      navigate("/");
+    } catch (error) {
+      console.error("Google login error:", error);
+    }
+  };
+
+  const handleAppleRegister = async () => {
+    try {
+      await loginWithApple();
+      navigate("/");
+    } catch (error) {
+      console.error("Apple login error:", error);
     }
   };
 
@@ -162,21 +180,27 @@ export default function Register() {
         </div>
 
         <div className="space-y-3">
-          <button className="flex items-center justify-center w-full py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition">
+          <button
+            onClick={handleGoogleRegister}
+            className="flex items-center justify-center w-full py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition"
+          >
             <img
               src="https://www.svgrepo.com/show/475656/google-color.svg"
               alt="Google"
-              className="h-5 w-5 mr-2"
+              className="h-5 w-5 mr-3"
             />
             <span className="text-sm font-medium text-gray-700">
               Continue with Google
             </span>
           </button>
-          <button className="flex items-center justify-center w-full py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition">
+          <button
+            onClick={handleAppleRegister}
+            className="flex items-center justify-center w-full py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition"
+          >
             <img
               src="https://www.svgrepo.com/show/475633/apple-color.svg"
               alt="Apple"
-              className="h-5 w-5 mr-2"
+              className="h-5 w-5 mr-3"
             />
             <span className="text-sm font-medium text-gray-700">
               Continue with Apple

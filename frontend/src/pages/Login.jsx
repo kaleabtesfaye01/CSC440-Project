@@ -6,7 +6,7 @@ import { useAuth } from "../hooks/useAuth";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, loginWithGoogle, loginWithApple } = useAuth();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email address").required("Required"),
@@ -28,8 +28,26 @@ export default function Login() {
     }
   };
 
+  const handleGoogleLogin = async () => {
+    try {
+      await loginWithGoogle();
+      navigate("/");
+    } catch (error) {
+      console.error("Google login error:", error);
+    }
+  };
+
+  const handleAppleLogin = async () => {
+    try {
+      await loginWithApple();
+      navigate("/");
+    } catch (error) {
+      console.error("Apple login error:", error);
+    }
+  };
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-blue-100 to-white px-4">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-blue-100 to-white px-4 ">
       <div className="bg-white shadow-xl rounded-3xl p-10 w-full max-w-md text-center animate-fade-in transition duration-500">
         <h2 className="text-3xl font-semibold mb-4">Welcome back!</h2>
         <p className="text-sm text-gray-500 mb-6">
@@ -107,7 +125,10 @@ export default function Login() {
         </div>
 
         <div className="space-y-3 mt-6">
-          <button className="flex items-center justify-center w-full py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition">
+          <button
+            onClick={handleGoogleLogin}
+            className="flex items-center justify-center w-full py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition"
+          >
             <img
               src="https://www.svgrepo.com/show/475656/google-color.svg"
               alt="Google"
@@ -118,7 +139,10 @@ export default function Login() {
             </span>
           </button>
 
-          <button className="flex items-center justify-center w-full py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition">
+          <button
+            onClick={handleAppleLogin}
+            className="flex items-center justify-center w-full py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition"
+          >
             <img
               src="https://www.svgrepo.com/show/475633/apple-color.svg"
               alt="Apple"

@@ -35,12 +35,46 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
+  const loginWithGoogle = async () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        setUser({
+          email: "googleuser@example.com",
+          firstname: "Google",
+          lastname: "User",
+        });
+        resolve();
+      }, 500);
+    }, 500);
+  };
+
+  const loginWithApple = async () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        setUser({
+          email: "appleuser@example.com",
+          firstname: "Apple",
+          lastname: "User",
+        });
+      });
+      resolve();
+    }, 500);
+  };
+
   const logout = () => setUser(null);
   const isAuthenticated = !!user;
 
   return (
     <AuthContext.Provider
-      value={{ user, login, register, logout, isAuthenticated }}
+      value={{
+        user,
+        login,
+        register,
+        logout,
+        isAuthenticated,
+        loginWithGoogle,
+        loginWithApple,
+      }}
     >
       {children}
     </AuthContext.Provider>
