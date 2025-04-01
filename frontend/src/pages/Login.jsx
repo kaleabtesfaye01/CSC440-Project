@@ -19,7 +19,7 @@ export default function Login() {
     try {
       await login(values);
       setStatus({ success: "Login successful" });
-      navigate("/login"); // redirect to protected route
+      navigate("/"); // redirect to protected route
     } catch (error) {
       console.error("Login error:", error);
       setStatus({ error: "Login failed. Please check your credentials." });

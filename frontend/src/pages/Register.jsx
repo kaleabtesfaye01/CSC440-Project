@@ -26,7 +26,7 @@ export default function Register() {
     try {
       await register(values);
       setStatus({ success: "Registration successful" });
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.error("Registration error:", error);
       setStatus({ error: "Registration failed. Please try again." });
