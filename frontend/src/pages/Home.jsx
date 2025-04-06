@@ -1,5 +1,6 @@
 import React from "react";
-import { FiHome, FiCalendar, FiClock, FiSettings, FiBell, FiUser } from "react-icons/fi";
+import { FiBell } from "react-icons/fi";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   // Dummy data for demonstration
@@ -15,49 +16,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header/Navigation */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            {/* Logo */}
-            <div className="flex items-center">
-              <span className="text-2xl font-bold text-blue-600">Smart Booking</span>
-            </div>
-
-            {/* Navigation Menu */}
-            <nav className="hidden md:flex space-x-8">
-              <a href="#" className="flex items-center text-gray-900 hover:text-blue-600">
-                <FiHome className="mr-2" /> Dashboard
-              </a>
-              <a href="#" className="flex items-center text-gray-500 hover:text-blue-600">
-                <FiClock className="mr-2" /> Appointments
-              </a>
-              <a href="#" className="flex items-center text-gray-500 hover:text-blue-600">
-                <FiCalendar className="mr-2" /> Calendar
-              </a>
-              <a href="#" className="flex items-center text-gray-500 hover:text-blue-600">
-                <FiSettings className="mr-2" /> Settings
-              </a>
-            </nav>
-
-            {/* User Profile */}
-            <div className="flex items-center space-x-4">
-              <button className="relative text-gray-500 hover:text-blue-600">
-                <FiBell className="w-6 h-6" />
-                <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-400 ring-2 ring-white"></span>
-              </button>
-              <div className="flex items-center space-x-2">
-                <img
-                  className="h-8 w-8 rounded-full"
-                  src="https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff"
-                  alt="User"
-                />
-                <span className="text-sm font-medium text-gray-700">User</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
