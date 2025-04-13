@@ -6,7 +6,7 @@ import { useAuth } from "../hooks/useAuth";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { login, loginWithGoogle, loginWithApple } = useAuth();
+  const { login, loginWithGoogle, loginWithMicrosoft } = useAuth();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email address").required("Required"),
@@ -37,9 +37,9 @@ export default function Login() {
     }
   };
 
-  const handleAppleLogin = async () => {
+  const handleMicrosoftLogin = async () => {
     try {
-      await loginWithApple();
+      await loginWithMicrosoft();
       navigate("/");
     } catch (error) {
       console.error("Apple login error:", error);
@@ -140,16 +140,16 @@ export default function Login() {
           </button>
 
           <button
-            onClick={handleAppleLogin}
+            onClick={handleMicrosoftLogin}
             className="flex items-center justify-center w-full py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition"
           >
             <img
-              src="https://www.svgrepo.com/show/475633/apple-color.svg"
+              src="https://www.svgrepo.com/show/448239/microsoft.svg"
               alt="Apple"
               className="h-5 w-5 mr-3"
             />
             <span className="text-sm font-medium text-gray-700">
-              Continue with Apple
+              Continue with Microsoft
             </span>
           </button>
         </div>

@@ -48,12 +48,12 @@ export const AuthProvider = ({ children }) => {
     }, 500);
   };
 
-  const loginWithApple = async () => {
+  const loginWithMicrosoft = async () => {
     return new Promise((resolve) => {
       setTimeout(() => {
         setUser({
-          email: "appleuser@example.com",
-          firstname: "Apple",
+          email: "microsoftuser@example.com",
+          firstname: "Microsoft",
           lastname: "User",
         });
       });
@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }) => {
         logout,
         isAuthenticated,
         loginWithGoogle,
-        loginWithApple,
+        loginWithMicrosoft,
       }}
     >
       {children}
