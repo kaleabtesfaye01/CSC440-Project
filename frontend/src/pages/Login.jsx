@@ -42,7 +42,7 @@ export default function Login() {
       await loginWithMicrosoft();
       navigate("/");
     } catch (error) {
-      console.error("Apple login error:", error);
+      console.error("Microsoft login error:", error);
     }
   };
 
