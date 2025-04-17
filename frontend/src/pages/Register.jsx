@@ -6,13 +6,13 @@ import { useAuth } from "../hooks/useAuth";
 
 export default function Register() {
   const navigate = useNavigate();
-  const { register, loginWithGoogle, loginWithApple } = useAuth();
+  const { register, loginWithGoogle, loginWithMicrosoft } = useAuth();
 
   const validationSchema = Yup.object().shape({
-    firstname: Yup.string()
+    firstName: Yup.string()
       .min(2, "First name must be at least 2 characters")
       .required("Required"),
-    lastname: Yup.string()
+    lastName: Yup.string()
       .min(2, "Last name must be at least 2 characters")
       .required("Required"),
     email: Yup.string().email("Invalid email address").required("Required"),
@@ -44,12 +44,12 @@ export default function Register() {
     }
   };
 
-  const handleAppleRegister = async () => {
+  const handleMicrosoftRegister = async () => {
     try {
-      await loginWithApple();
+      await loginWithMicrosoft();
       navigate("/");
     } catch (error) {
-      console.error("Apple login error:", error);
+      console.error("Microsoft login error:", error);
     }
   };
 
@@ -69,8 +69,8 @@ export default function Register() {
 
         <Formik
           initialValues={{
-            firstname: "",
-            lastname: "",
+            firstName: "",
+            lastName: "",
             email: "",
             password: "",
             agree: false,
@@ -83,7 +83,7 @@ export default function Register() {
               <div className="flex gap-2">
                 <div className="w-1/2">
                   <Field
-                    name="firstname"
+                    name="firstName"
                     type="text"
                     placeholder="First name"
                     autoComplete="given-name"
@@ -91,14 +91,14 @@ export default function Register() {
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                   />
                   <ErrorMessage
-                    name="firstname"
+                    name="firstName"
                     component="div"
                     className="text-red-500 text-sm mt-1"
                   />
                 </div>
                 <div className="w-1/2">
                   <Field
-                    name="lastname"
+                    name="lastName"
                     type="text"
                     placeholder="Last name"
                     autoComplete="family-name"
@@ -106,7 +106,7 @@ export default function Register() {
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                   />
                   <ErrorMessage
-                    name="lastname"
+                    name="lastName"
                     component="div"
                     className="text-red-500 text-sm mt-1"
                   />
@@ -194,16 +194,16 @@ export default function Register() {
             </span>
           </button>
           <button
-            onClick={handleAppleRegister}
+            onClick={handleMicrosoftRegister}
             className="flex items-center justify-center w-full py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition"
           >
             <img
-              src="https://www.svgrepo.com/show/475633/apple-color.svg"
+              src="https://www.svgrepo.com/show/448239/microsoft.svg"
               alt="Apple"
               className="h-5 w-5 mr-3"
             />
             <span className="text-sm font-medium text-gray-700">
-              Continue with Apple
+              Continue with Microsoft
             </span>
           </button>
         </div>

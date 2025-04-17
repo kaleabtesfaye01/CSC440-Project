@@ -1,26 +1,30 @@
+// src/App.jsx
 import React from "react";
-import { Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router";
+import { AuthProvider } from "./context/AuthContext.jsx";
+import PrivateRoute from "./components/PrivateRoute";
+
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import PrivateRoute from "./components/PrivateRoute";
-import HomePage from "./pages/Home";
+import OAuthCallback from "./pages/OAuthCallback";
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <HomePage />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/auth/callback" element={<OAuthCallback />} />
+
+      <Route
+        path="/"
+        element={
+          <PrivateRoute>
+            <Home />
+          </PrivateRoute>
+        }
+      />
+    </Routes>
   );
 }
 
