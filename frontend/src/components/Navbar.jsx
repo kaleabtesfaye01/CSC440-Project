@@ -2,7 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../hooks/useAuth";
 import { Link } from "react-router";
-import { FiHome, FiCalendar, FiClock, FiSettings, FiBell, FiLogOut } from "react-icons/fi";
+import {
+  FiHome,
+  FiCalendar,
+  FiClock,
+  FiSettings,
+  FiBell,
+  FiLogOut,
+} from "react-icons/fi";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
@@ -35,16 +42,28 @@ export default function Navbar() {
         {/* Center section with navigation */}
         <div className="flex-1 flex justify-center">
           <nav className="hidden md:flex space-x-8">
-            <Link to="/" className="flex items-center text-gray-900 hover:text-blue-600">
+            <Link
+              to="/"
+              className="flex items-center text-gray-900 hover:text-blue-600"
+            >
               <FiHome className="mr-2" /> Dashboard
             </Link>
-            <Link to="/appointments" className="flex items-center text-gray-500 hover:text-blue-600">
+            <Link
+              to="/appointments"
+              className="flex items-center text-gray-500 hover:text-blue-600"
+            >
               <FiClock className="mr-2" /> Appointments
             </Link>
-            <Link to="/calendar" className="flex items-center text-gray-500 hover:text-blue-600">
+            <Link
+              to="/calendar"
+              className="flex items-center text-gray-500 hover:text-blue-600"
+            >
               <FiCalendar className="mr-2" /> Calendar
             </Link>
-            <Link to="/settings" className="flex items-center text-gray-500 hover:text-blue-600">
+            <Link
+              to="/settings"
+              className="flex items-center text-gray-500 hover:text-blue-600"
+            >
               <FiSettings className="mr-2" /> Settings
             </Link>
           </nav>
@@ -60,12 +79,14 @@ export default function Navbar() {
             <div className="flex items-center space-x-2">
               <img
                 className="h-8 w-8 rounded-full"
-                src={`https://ui-avatars.com/api/?name=${user?.firstname || 'User'}&background=0D8ABC&color=fff`}
-                alt={user?.firstname || 'User'}
+                src={`https://ui-avatars.com/api/?name=${
+                  user?.firstName || "User"
+                }&background=0D8ABC&color=fff`}
+                alt={user?.firstName || "User"}
               />
               {user && (
                 <span className="text-sm font-medium text-gray-700">
-                  {user.firstname}
+                  {user.firstName}
                 </span>
               )}
               <button
