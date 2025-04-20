@@ -5,6 +5,7 @@ import authRoutes from "./routes/authRoutes.js";
 import passport from "passport";
 import googleRoutes from "./routes/googleRoutes.js";
 import microsoftRoutes from "./routes/microsoftRoutes.js";
+import paymentRoutes from "./routes/paymentRoutes.js";
 import { protect } from "./middleware/authMiddleware.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import morgan from "morgan";
@@ -28,6 +29,8 @@ app.use(morgan("dev"));
 app.use("/api/auth", authRoutes);
 app.use("/api/auth", googleRoutes);
 app.use("/api/auth", microsoftRoutes);
+
+app.use("/api/payment", paymentRoutes);
 
 app.use(passport.initialize());
 
