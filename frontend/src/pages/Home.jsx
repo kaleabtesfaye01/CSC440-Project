@@ -92,7 +92,7 @@ export default function Home() {
               Available Slots
             </h2>
             <p className="text-sm text-gray-500 mb-4">
-              View and manage your upcoming available times.
+              Pick a time that works for you.
             </p>
             <button
               className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
