@@ -1,13 +1,11 @@
-// src/App.jsx
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router";
-import { AuthProvider } from "./context/AuthContext.jsx";
+import { Routes, Route } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
-
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import OAuthCallback from "./pages/OAuthCallback";
+import AvailableAppointments from "./pages/AvailableAppointments";
 
 function App() {
   return (
@@ -21,6 +19,15 @@ function App() {
         element={
           <PrivateRoute>
             <Home />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/appointments"
+        element={
+          <PrivateRoute>
+            <AvailableAppointments />
           </PrivateRoute>
         }
       />
