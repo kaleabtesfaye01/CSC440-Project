@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../hooks/useAuth";
-import { Link } from "react-router";
+import { Link } from "react-router-dom"; // Use react-router-dom for Link
 
 export default function Navbar() {
   const { user, logout } = useAuth();
@@ -28,8 +28,14 @@ export default function Navbar() {
         </span>
       </Link>
 
-      {/* User and Logout */}
-      <div className="flex items-center gap-4">
+      {/* Navigation Links */}
+      <div className="flex items-center gap-6">
+        {/* Calendar Link */}
+        <Link to="/calendar" className="text-sm text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">
+          Calendar
+        </Link>
+
+        {/* User and Logout */}
         {user && (
           <span className="text-sm text-gray-600 dark:text-gray-300">
             Hello, {user.firstname}
