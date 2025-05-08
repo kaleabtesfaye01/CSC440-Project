@@ -1,6 +1,7 @@
 import React from "react";
 import { FiBell } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import NotificationPanel from "../components/NotificationPanel";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -102,29 +103,12 @@ export default function Home() {
             </button>
           </section>
 
-          {/* Notifications */}
+          {/* Notifications Panel */}
           <section className="bg-white rounded-lg shadow p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">
               Notifications
             </h2>
-            <div className="space-y-4">
-              {notifications.map((notification) => (
-                <div
-                  key={notification.id}
-                  className="flex items-start space-x-3"
-                >
-                  <div className="flex-shrink-0">
-                    <FiBell className="h-5 w-5 text-gray-400" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-900">
-                      {notification.message}
-                    </p>
-                    <p className="text-xs text-gray-500">{notification.time}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <NotificationPanel />
           </section>
         </div>
       </div>
